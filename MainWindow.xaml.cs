@@ -24,5 +24,16 @@ namespace Elementary
         {
             InitializeComponent();
         }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal) WindowState = WindowState.Minimized;
+            else WindowState = WindowState.Normal;
+        }
     }
 }
