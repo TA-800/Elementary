@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle Fill="#020617" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+            <Rectangle x:Name="TopDragBar" Fill="#020617" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" MouseLeftButtonDown="TopDragBar_MouseLeftButtonDown"/>
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Elementary" Margin="10,0,0,2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" >
                 <Button x:Name="MinimizeWindow" Content="🗖"
