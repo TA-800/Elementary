@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Elementary.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for Info.xaml
+    /// Interaction logic for InfoView.xaml
     /// </summary>
-    public partial class Info : UserControl
+    public partial class InfoView : UserControl
     {
-        public Info()
+        public InfoView()
         {
             InitializeComponent();
         }

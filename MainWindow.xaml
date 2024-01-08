@@ -13,6 +13,7 @@
         Height="450"
         Width="800">
 
+
     <Border Background="{StaticResource PrimaryDark2Brush}">
         <Grid>
             <Grid.RowDefinitions>
@@ -25,6 +26,7 @@
                 <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
 
+            <!-- Top bar -->
             <Rectangle x:Name="TopDragBar"
                        Fill="{StaticResource PrimaryDark1Brush}"
                        Grid.Row="0"
@@ -51,6 +53,7 @@
                         Click="CloseWindow_Click" />
             </UniformGrid>
 
+            <!-- Left side bar -->
             <Border x:Name="LeftSidebarBorder"
                     Background="{StaticResource PrimaryDark1Brush}"
                     Padding="0,50"
@@ -76,6 +79,32 @@
                             CommandParameter="{x:Static local:PageId.Info}" />
                 </UniformGrid>
             </Border>
+
+            <!-- Main Content -->
+            <ContentControl x:Name="MainContent"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="ContentTemplate"
+                                Value="{StaticResource HomeView}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentPage}"
+                                         Value="About">
+                                <Setter Property="ContentTemplate"
+                                        Value="{StaticResource AboutView}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding CurrentPage}"
+                                         Value="Info">
+                                <Setter Property="ContentTemplate"
+                                        Value="{StaticResource InfoView}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+
         </Grid>
     </Border>
 </Window>
