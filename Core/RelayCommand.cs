@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Elementary.Core
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         Action<object> _execute;
         Func<object, bool> _canExecute;
