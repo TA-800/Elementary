@@ -11,37 +11,6 @@
         AllowsTransparency="True"
         Title="MainWindow" Height="450" Width="800">
 
-    <Window.Resources>
-
-        <!-- Apply this style to all textblocks -->
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#cbd5e1"/>
-        </Style>
-
-        <!-- Button Template for Close and Minimize -->
-        <Style TargetType="Button" x:Key="windowActionButtonTemplate">
-            <Setter Property="Background" Value="Transparent"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" Width="30">
-                            <TextBlock Text="{TemplateBinding Content}" Foreground="#cbd5e1" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Red"/>
-                </Trigger>
-            </Style.Triggers>
-            
-        </Style>
-    </Window.Resources>
-    
-    
     <Border Background="#0f172a" BorderBrush="#020617" BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
@@ -58,9 +27,9 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Elementary" Margin="10,0,0,2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" >
                 <Button x:Name="MinimizeWindow" Content="🗖"
-                                             Style="{StaticResource windowActionButtonTemplate}" Click="MinimizeWindow_Click" />
+                                             Style="{StaticResource ActionButtonTemplate}" Click="MinimizeWindow_Click" />
                 <Button x:Name="CloseWindow" Content="✖"
-                                             Style="{StaticResource windowActionButtonTemplate}" Click="CloseWindow_Click" />
+                                             Style="{StaticResource ActionButtonTemplate}" Click="CloseWindow_Click" />
             </StackPanel>
         </Grid>
     </Border>
