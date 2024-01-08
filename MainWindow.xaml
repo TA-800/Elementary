@@ -37,37 +37,39 @@
                        Margin="10,0,0,2"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center" />
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        HorizontalAlignment="Right">
+            <UniformGrid Grid.Row="0"
+                         Grid.Column="2"
+                         Rows="1"
+                         Columns="2">
                 <Button x:Name="MinimizeWindow"
-                        Width="30"
                         Content="🗖"
                         Style="{StaticResource ActionButtonTemplate}"
                         Click="MinimizeWindow_Click" />
                 <Button x:Name="CloseWindow"
-                        Width="30"
                         Content="✖"
                         Style="{StaticResource ActionButtonTemplate}"
                         Click="CloseWindow_Click" />
-            </StackPanel>
+            </UniformGrid>
 
-            <StackPanel x:Name="LeftSidebar"
-                        Background="{StaticResource PrimaryDark1Brush}"
-                        Grid.Row="1"
-                        Grid.Column="0">
-                <Button Style="{StaticResource SidebarButtonTemplate}"
-                        x:Name="GotoHomeButton"
-                        Content="Home" />
-                <Button Style="{StaticResource SidebarButtonTemplate}"
-                        x:Name="GotoAboutButton"
-                        Content="About" />
-                <Button Style="{StaticResource SidebarButtonTemplate}"
-                        x:Name="GotoInfoButton"
-                        Content="Info" />
-            </StackPanel>
-
+            <Border x:Name="LeftSidebarBorder"
+                    Background="{StaticResource PrimaryDark1Brush}"
+                    Padding="0,50"
+                    Grid.Row="1"
+                    Grid.Column="0">
+                <UniformGrid x:Name="LeftSideBar"
+                             Rows="3"
+                             Columns="1">
+                    <Button Style="{StaticResource SidebarButtonTemplate}"
+                            x:Name="GotoHomeButton"
+                            Content="Home" />
+                    <Button Style="{StaticResource SidebarButtonTemplate}"
+                            x:Name="GotoAboutButton"
+                            Content="About" />
+                    <Button Style="{StaticResource SidebarButtonTemplate}"
+                            x:Name="GotoInfoButton"
+                            Content="Info" />
+                </UniformGrid>
+            </Border>
         </Grid>
     </Border>
 </Window>
