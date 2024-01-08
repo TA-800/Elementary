@@ -2,18 +2,35 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Colors -->
-    <Color x:Key="PrimaryTextColor"
+    <!-- Light 1 lighter than 2 ... -->
+    <Color x:Key="PrimaryLight1"
            R="203"
            G="213"
            B="225"
            A="255" />
+
+    <!-- Dark 1 darker than 2 ... -->
+    <Color x:Key="PrimaryDark1"
+           R="2"
+           G="6"
+           B="23"
+           A="255" />
+    <Color x:Key="PrimaryDark2"
+           R="15"
+           G="23"
+           B="42"
+           A="255" />
+    <Color x:Key="PrimaryDark3"
+           R="30"
+           G="41"
+           B="59"
+           A="255" />
+
     <Color x:Key="ActionButtonNormalColor"
            R="255"
            B="0"
            G="0"
            A="0" />
-        
-    <!-- Red -->
     <Color x:Key="ActionButtonHoverColor"
            R="255"
            B="0"
@@ -21,30 +38,32 @@
            A="255" />
 
     <!-- Brush -->
-    <SolidColorBrush x:Key="PrimaryTextBrush"
-                     Color="{StaticResource PrimaryTextColor}" />
-
-
+    <SolidColorBrush x:Key="PrimaryLight1Brush"
+                     Color="{StaticResource PrimaryLight1}" />
+    <SolidColorBrush x:Key="PrimaryDark1Brush"
+                     Color="{StaticResource PrimaryDark1}" />
+    <SolidColorBrush x:Key="PrimaryDark2Brush"
+                     Color="{StaticResource PrimaryDark2}" />
+    <SolidColorBrush x:Key="PrimaryDark3Brush"
+                     Color="{StaticResource PrimaryDark3}" />
 
 
     <!-- Apply this style to all textblocks -->
     <Style TargetType="TextBlock">
         <Setter Property="Foreground"
-                Value="{StaticResource PrimaryTextBrush}" />
+                Value="{StaticResource PrimaryLight1Brush}" />
     </Style>
 
     <!-- Button Template for Close and Minimize -->
     <Style TargetType="Button"
            x:Key="ActionButtonTemplate">
 
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
 
                     <!-- Background for Button -->
-                    <Border x:Name="ActionButtonBorder"
-                            Margin="{TemplateBinding Margin}">
+                    <Border Margin="{TemplateBinding Margin}">
 
                         <Border.Background>
                             <SolidColorBrush x:Name="ActionButtonBorderBackground"
@@ -92,6 +111,61 @@
         </Setter>
 
 
+    </Style>
+
+    <!-- Button Template for Navigation sidebar -->
+    <Style TargetType="Button"
+           x:Key="SidebarButtonTemplate">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Margin="{TemplateBinding Margin}">
+                        <Border.Background>
+                            <SolidColorBrush x:Name="SidebarButtonBorderBackground"
+                                             Color="{StaticResource PrimaryDark1}" />
+                        </Border.Background>
+
+                        <ContentPresenter x:Name="SidebarButtonContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="SidebarButtonBorderBackground"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PrimaryDark3}"
+                                                        Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="SidebarButtonBorderBackground"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource PrimaryDark1}"
+                                                        Duration="0:0:0.15" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

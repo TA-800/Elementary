@@ -9,28 +9,65 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="800">
 
-    <Border Background="#0f172a" BorderBrush="#020617" BorderThickness="2">
+    <Border Background="{StaticResource PrimaryDark2Brush}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="25" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
 
-            <Rectangle x:Name="TopDragBar" Fill="#020617" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" MouseLeftButtonDown="TopDragBar_MouseLeftButtonDown"/>
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Elementary" Margin="10,0,0,2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" >
-                <Button x:Name="MinimizeWindow" Content="🗖"
-                                             Style="{StaticResource ActionButtonTemplate}" Click="MinimizeWindow_Click" />
-                <Button x:Name="CloseWindow" Content="✖"
-                                             Style="{StaticResource ActionButtonTemplate}" Click="CloseWindow_Click" />
+            <Rectangle x:Name="TopDragBar"
+                       Fill="{StaticResource PrimaryDark1Brush}"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3"
+                       MouseLeftButtonDown="TopDragBar_MouseLeftButtonDown" />
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Elementary"
+                       Margin="10,0,0,2"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right">
+                <Button x:Name="MinimizeWindow"
+                        Width="30"
+                        Content="🗖"
+                        Style="{StaticResource ActionButtonTemplate}"
+                        Click="MinimizeWindow_Click" />
+                <Button x:Name="CloseWindow"
+                        Width="30"
+                        Content="✖"
+                        Style="{StaticResource ActionButtonTemplate}"
+                        Click="CloseWindow_Click" />
             </StackPanel>
+
+            <StackPanel x:Name="LeftSidebar"
+                        Background="{StaticResource PrimaryDark1Brush}"
+                        Grid.Row="1"
+                        Grid.Column="0">
+                <Button Style="{StaticResource SidebarButtonTemplate}"
+                        x:Name="GotoHomeButton"
+                        Content="Home" />
+                <Button Style="{StaticResource SidebarButtonTemplate}"
+                        x:Name="GotoAboutButton"
+                        Content="About" />
+                <Button Style="{StaticResource SidebarButtonTemplate}"
+                        x:Name="GotoInfoButton"
+                        Content="Info" />
+            </StackPanel>
+
         </Grid>
     </Border>
 </Window>
