@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Elementary"
         mc:Ignorable="d"
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanResizeWithGrip"
         Background="Transparent"
         AllowsTransparency="True"
         Title="MainWindow"
@@ -54,31 +54,12 @@
             </UniformGrid>
 
             <!-- Left side bar -->
-            <Border x:Name="LeftSidebarBorder"
-                    Background="{StaticResource PrimaryDark1Brush}"
-                    Padding="0,50"
-                    Grid.Row="1"
-                    Grid.Column="0">
-                <UniformGrid x:Name="LeftSideBar"
-                             Rows="3"
-                             Columns="1">
-                    <Button Style="{StaticResource SidebarButtonTemplate}"
-                            x:Name="GotoHomeButton"
-                            Content="Home"
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="{x:Static local:PageId.Home}" />
-                    <Button Style="{StaticResource SidebarButtonTemplate}"
-                            x:Name="GotoAboutButton"
-                            Content="About"
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="{x:Static local:PageId.About}" />
-                    <Button Style="{StaticResource SidebarButtonTemplate}"
-                            x:Name="GotoInfoButton"
-                            Content="Info"
-                            Command="{Binding NavigateCommand}"
-                            CommandParameter="{x:Static local:PageId.Info}" />
-                </UniformGrid>
-            </Border>
+            <ListView x:Name="LeftSidebarBorder"
+                      Background="{StaticResource PrimaryDark1Brush}"
+                      Grid.Row="1"
+                      Grid.Column="0"
+                      ItemsSource="{Binding NavigationItemList}"
+                      SelectedItem="{Binding CurrentPage}" ItemContainerStyle="{StaticResource NavigationItem}" />
 
             <!-- Main Content -->
             <ContentControl x:Name="MainContent"
@@ -90,6 +71,7 @@
                         <Setter Property="ContentTemplate"
                                 Value="{StaticResource HomeView}" />
                         <Style.Triggers>
+                            <!-- Based on CurrentPage value, change view by setting ContentTemplate -->
                             <DataTrigger Binding="{Binding CurrentPage}"
                                          Value="About">
                                 <Setter Property="ContentTemplate"

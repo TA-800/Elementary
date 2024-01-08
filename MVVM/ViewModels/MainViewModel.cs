@@ -1,5 +1,6 @@
 ﻿using Elementary.Core;
 using System;
+using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 
 namespace Elementary.MVVM.ViewModels
@@ -7,27 +8,29 @@ namespace Elementary.MVVM.ViewModels
     public class MainViewModel : ObservableObject
     {
 
-		private PageId currentPage;
+        public ObservableCollection<PageId> NavigationItemList { get; set; }
 
-		public PageId CurrentPage
-		{
-			get { return currentPage; }
-			set { currentPage = value; OnPropertyChanged(); }
-		}
-
-
-		void NavigateView(PageId newPage)
-		{
-			// Navigate to new page
-            CurrentPage = newPage;
-			// currentPage changes, invokes OnPropertyChanged() from ObservableObject which updates the view
+        private PageId currentPage;
+        public PageId CurrentPage
+        {
+            get { return currentPage; }
+            set { currentPage = value; OnPropertyChanged(); }
         }
-		public RelayCommand NavigateCommand => new RelayCommand ((object pageId) => NavigateView((PageId)pageId));
 
-		public MainViewModel() {
-			// Default page
-			CurrentPage = PageId.Home;	
-		}
+        public MainViewModel()
+        {
+            // Default page
+            CurrentPage = PageId.Home;
+
+            // Navigation items = PageId.Home, About, Info
+            NavigationItemList = new ObservableCollection<PageId>
+            {
+                PageId.Home,
+                PageId.About,
+                PageId.Info
+            };
+
+        }
 
     }
 }
