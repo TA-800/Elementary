@@ -1,5 +1,6 @@
 ﻿using Elementary.Core;
 using Elementary.MVVM.Models;
+using Elementary.MVVM.Stores;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -17,10 +18,20 @@ namespace Elementary.MVVM.ViewModels
         }
         public HomeViewModel()
         {
-            _ = GetUserAsync().ContinueWith((task) =>
+
+            if (UserStore.SavedUser != null)
             {
-                MyUser = task.Result;
-            });
+                MyUser = UserStore.SavedUser;
+            }
+            else
+            {
+                _ = GetUserAsync().ContinueWith((task) =>
+                {
+                    MyUser = task.Result;
+                    UserStore.SavedUser = MyUser;
+                });
+            }
+
 
         }
         public async Task<User> GetUserAsync()
