@@ -59,7 +59,9 @@
                       Grid.Row="1"
                       Grid.Column="0"
                       ItemsSource="{Binding NavigationItemList}"
-                      SelectedItem="{Binding CurrentPage}" ItemContainerStyle="{StaticResource NavigationItem}" />
+                      SelectedItem="{Binding CurrentPage}"
+                      ItemContainerStyle="{StaticResource NavigationItem}"
+                      BorderBrush="{x:Null}" />
 
             <!-- Main Content -->
             <ContentControl x:Name="MainContent"

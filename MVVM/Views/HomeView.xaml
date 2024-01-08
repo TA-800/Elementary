@@ -4,12 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Elementary.MVVM.Views"
+             xmlns:viewModels="clr-namespace:Elementary.MVVM.ViewModels"
+             xmlns:models="clr-namespace:Elementary.MVVM.Models"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <!-- DataContext = HomeViewModel -->
+    <UserControl.DataContext>
+        <viewModels:HomeViewModel />
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="UserDataTemplate" DataType="models:User">
+            <StackPanel>
+                <TextBlock Text="{Binding name}" />
+                <TextBlock Text="{Binding id}" />
+                <TextBlock Text="{Binding email}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Border Background="Yellow">
+        <StackPanel>
         <TextBlock Text="Home"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
                    FontSize="48" />
+            <ContentControl x:Name="TestUser"
+                            Content="{Binding MyUser}"
+                            ContentTemplate="{StaticResource UserDataTemplate}" />
+        </StackPanel> 
     </Border>
 </UserControl>

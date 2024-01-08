@@ -23,8 +23,7 @@ namespace Elementary
 
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowState == WindowState.Normal) WindowState = WindowState.Minimized;
-            else WindowState = WindowState.Normal;
+            WindowState = WindowState.Minimized;
         }
 
         private void TopDragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
