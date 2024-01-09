@@ -31,11 +31,17 @@
             </Grid.ColumnDefinitions>
 
             <!-- Main View -->
-            <StackPanel Grid.Row="0"
-                        Grid.RowSpan="3"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="3">
-                <DockPanel>
+            <Grid Grid.Row="0"
+                  Grid.RowSpan="3"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="80*" />
+                </Grid.RowDefinitions>
+
+                <!-- Header (Elements + Search) -->
+                <DockPanel Grid.Row="0">
                     <TextBlock Text="Elements"
                                DockPanel.Dock="Left"
                                Margin="10"
@@ -44,19 +50,22 @@
                 </DockPanel>
 
                 <!-- Show text when loading -->
-                <TextBlock Text="⌛ Loading..."
+                <TextBlock Grid.Row="1"
+                           Text="⌛ Loading..."
                            Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
                            Style="{StaticResource LoadingElementsText}" />
+
                 <!-- List of elements -->
-                <ListView ItemsSource="{Binding Elements}"
+                <ListView Grid.Row="1"
+                          ItemsSource="{Binding Elements}"
                           SelectedItem="{Binding SelectedElement}"
-                          Height="365"
+                          VerticalAlignment="Stretch"
                           SelectionMode="Single"
                           Background="Transparent"
                           BorderThickness="0"
                           ItemContainerStyle="{StaticResource ElementItemContainer}"
                           d:ItemsSource="{d:SampleData ItemCount=5}" />
-            </StackPanel>
+            </Grid>
 
             <!-- Info box on bottom right -->
             <ContentControl Grid.Row="1"
