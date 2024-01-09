@@ -389,6 +389,35 @@
         </Style.Triggers>
     </Style>
 
+    <!-- About View styles, info text -->
+    <Style x:Key="InfoText"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="{StaticResource PrimaryLight1P5Brush}" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Margin"
+                Value="10,10,0,0" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+    </Style>
+
+    <Style x:Key="InfoHeader"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="{StaticResource PrimaryLight1Brush}" />
+        <Setter Property="FontWeight"
+                Value="DemiBold" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Margin"
+                Value="10,10,0,0" />
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+    </Style>
+
 
     <!-- Custom scrollbar: https://pastebin.com/adtRjDtG -->
     <!-- Brushes for the scrollbar -->

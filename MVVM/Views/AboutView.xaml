@@ -31,35 +31,18 @@
                                Foreground="White" />
                 </StackPanel>
                 <TextBlock Text="What is Elementary?"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top"
-                           FontWeight="DemiBold"
-                           FontSize="24"
-                           Margin="10,10,0,0" />
+                           Style="{StaticResource InfoHeader}" />
                 <TextBlock Text="This application serves as a simple study tool for learning basic information about the elements in the Periodic Table."
-                           TextWrapping="Wrap"
-                           Margin="10,10,0,0"
-                           Foreground="{StaticResource PrimaryLight1P5Brush}"
-                           FontSize="16" />
+                           Style="{StaticResource InfoText}" />
 
                 <TextBlock Text="How can I use it?"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Top"
-                           FontWeight="DemiBold"
-                           FontSize="24"
-                           Margin="10,10,0,0" />
+                           Style="{StaticResource InfoHeader}" />
                 <!-- List view of two points -->
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="1. Click on the element to you wish to inspect and an info box to the right will appear containing detailed information about the element clicked on."
-                               TextWrapping="Wrap"
-                               Foreground="{StaticResource PrimaryLight1P5Brush}"
-                               FontSize="16"
-                               Margin="10,10,0,0" />
+                               Style="{StaticResource InfoText}" />
                     <TextBlock Text="2. Type in the search bar at the top to filter out the elements displayed in the main view containing the characters in the search bar."
-                               TextWrapping="Wrap"
-                               Foreground="{StaticResource PrimaryLight1P5Brush}"
-                               FontSize="16"
-                               Margin="10,10,0,0" />
+                               Style="{StaticResource InfoText}" />
                 </StackPanel>
 
 
