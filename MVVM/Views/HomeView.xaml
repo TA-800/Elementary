@@ -20,17 +20,21 @@
     <Border Background="{StaticResource PrimaryLight3Brush}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="70*" />
+                <ColumnDefinition Width="60*" />
+                <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
+
+            <!-- Main View -->
             <StackPanel Grid.Row="0"
-                        Grid.RowSpan="2"
+                        Grid.RowSpan="3"
                         Grid.Column="0"
-                        Grid.ColumnSpan="2">
+                        Grid.ColumnSpan="3">
                 <TextBlock Text="Knowledge"
                            Margin="10"
                            FontSize="48" />
@@ -45,12 +49,125 @@
             </StackPanel>
 
             <!-- Info box on bottom right -->
-            <Border x:Name="ElementInfoBox"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="0,0,20,20"
-                    Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Style="{StaticResource InfoBoxStyle}" />
+            <!-- Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"-->
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Content="{Binding SelectedElement}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+
+                        <!-- Wrapper -->
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <Border Background="{StaticResource PrimaryDark5Brush}"
+                                    CornerRadius="4">
+                                <StackPanel>
+
+                                    <!-- Header -->
+                                    <Border Background="{StaticResource PrimaryDark4Brush}"
+                                            CornerRadius="4"
+                                            Margin="5"
+                                            Padding="2.5">
+                                        <DockPanel>
+                                            <TextBlock Text="{Binding Number}"
+                                                       VerticalAlignment="Center"
+                                                       DockPanel.Dock="Left"
+                                                       Margin="5" />
+                                            <TextBlock Text="{Binding Name}"
+                                                       VerticalAlignment="Center"
+                                                       Margin="5" />
+                                            <TextBlock Text="{Binding Symbol}"
+                                                       VerticalAlignment="Bottom"
+                                                       HorizontalAlignment="Right"
+                                                       FontWeight="Black"
+                                                       FontSize="22"
+                                                       Margin="5" />
+                                        </DockPanel>
+                                    </Border>
+
+                                    <!-- Information -->
+                                    <Border>
+                                        <StackPanel>
+                                            <TextBlock Text="Information"
+                                                       Margin="5"
+                                                       FontWeight="Bold" />
+                                            <Border>
+                                                <Grid Margin="10">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20*" />
+                                                        <ColumnDefinition Width="80*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Text="Mass"
+                                                               FontWeight="Light"
+                                                               FontSize="10" />
+                                                    <TextBlock Text="Period"
+                                                               FontWeight="Light"
+                                                               FontSize="10"
+                                                               Grid.Row="1" />
+                                                    <TextBlock Text="Group"
+                                                               FontWeight="Light"
+                                                               FontSize="10"
+                                                               Grid.Row="2" />
+                                                    <TextBlock Text="Block"
+                                                               FontWeight="Light"
+                                                               FontSize="10"
+                                                               Grid.Row="3" />
+                                                    <TextBlock Text="Configuration"
+                                                               FontWeight="Light"
+                                                               FontSize="10"
+                                                               Grid.Row="4" />
+
+                                                    <TextBlock Text="{Binding Atomic_Mass}"
+                                                               FontWeight="Bold"
+                                                               FontSize="14"
+                                                               Grid.Column="1" />
+                                                    <TextBlock Text="{Binding Period}"
+                                                               FontWeight="Bold"
+                                                               FontSize="14"
+                                                               Grid.Row="1"
+                                                               Grid.Column="1" />
+                                                    <TextBlock Text="{Binding Group}"
+                                                               FontWeight="Bold"
+                                                               FontSize="14"
+                                                               Grid.Row="2"
+                                                               Grid.Column="1" />
+                                                    <TextBlock Text="{Binding Block}"
+                                                               FontWeight="Bold"
+                                                               FontSize="14"
+                                                               Grid.Row="3"
+                                                               Grid.Column="1" />
+                                                    <TextBlock Text="{Binding Electron_Configuration}"
+                                                               FontWeight="Bold"
+                                                               FontSize="14"
+                                                               Grid.Row="4"
+                                                               Grid.Column="1" />
+
+                                                    <TextBlock Text="{Binding Summary}"
+                                                               TextWrapping="Wrap"
+                                                               Grid.Row="5"
+                                                               Grid.ColumnSpan="2" />
+
+                                                </Grid>
+                                            </Border>
+                                        </StackPanel>
+                                    </Border>
+
+                                </StackPanel>
+                            </Border>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
         </Grid>
     </Border>
 </UserControl>

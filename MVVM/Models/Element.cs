@@ -8,6 +8,7 @@ namespace Elementary.MVVM.Models
 {
     public class Element
     {
+        // Make sure the names of the properties match the names of the JSON keys (case-insensitive)
         public string Name { get; }
         public string Symbol { get; }
         public int Number { get; }
@@ -17,8 +18,9 @@ namespace Elementary.MVVM.Models
         public string Block { get; }
         public string Electron_Configuration { get; }
         public string Category { get; }
+        public string Summary { get;  }
 
-        public Element(string name, string symbol, int number, double atomic_mass, int group, int period, string block, string electron_configuration, string category)
+        public Element(string name, string symbol, int number, double atomic_mass, int group, int period, string block, string electron_configuration, string category, string summary)
         {
             Name = name;
             Symbol = symbol;
@@ -29,6 +31,7 @@ namespace Elementary.MVVM.Models
             Block = block;
             Electron_Configuration = electron_configuration;
             Category = category;
+            Summary = summary;
         }
 
 
