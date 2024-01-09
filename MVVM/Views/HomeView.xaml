@@ -43,6 +43,10 @@
                     <TextBox Style="{StaticResource SearchBoxStyle}" />
                 </DockPanel>
 
+                <!-- Show text when loading -->
+                <TextBlock Text="⌛ Loading..."
+                           Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+                           Style="{StaticResource LoadingElementsText}" />
                 <!-- List of elements -->
                 <ListView ItemsSource="{Binding Elements}"
                           SelectedItem="{Binding SelectedElement}"

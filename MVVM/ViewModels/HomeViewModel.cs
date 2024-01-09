@@ -26,6 +26,15 @@ namespace Elementary.MVVM.ViewModels
             set { isSelected = value; OnPropertyChanged(); }
         }
 
+        // Is Loading
+        private bool isLoading;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { isLoading = value; OnPropertyChanged(); }
+        }
+
+
         // Selected element
         private Element selectedElement;
         public Element SelectedElement
@@ -41,7 +50,6 @@ namespace Elementary.MVVM.ViewModels
 
 
         private string searchText;
-
         public string SearchText
         {
             get { return searchText; }
@@ -65,6 +73,7 @@ namespace Elementary.MVVM.ViewModels
 
         public HomeViewModel()
         {
+            IsLoading = true;
 
             // Initialize lists
             AllElements = new List<Element>();
@@ -78,6 +87,7 @@ namespace Elementary.MVVM.ViewModels
                     Elements.Add(element);
                 }
 
+                IsLoading = false;
             }
             else
             {
@@ -94,8 +104,11 @@ namespace Elementary.MVVM.ViewModels
                     }
 
                     ElementStore.Elements = task.Result;
+                    // Do not define outside because this is a different thread
+                    IsLoading = false;
                 });
             }
+
         }
         public async Task<List<Element>> GetElementsAsync()
         {

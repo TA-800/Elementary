@@ -447,6 +447,17 @@
 
     </Style>
 
+    <!-- Hide when loading elements text block -->
+
+    <Style x:Key="LoadingElementsText"
+           TargetType="TextBlock">
+        <Setter Property="Foreground"
+                Value="{StaticResource PrimaryLight2Brush}" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Margin"
+                Value="20,10" />
+    </Style>
 
     <!-- About View styles, info text -->
     <Style x:Key="InfoText"
