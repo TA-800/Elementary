@@ -17,7 +17,7 @@
     <Border Background="{StaticResource PrimaryDark2Brush}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="25" />
+                <RowDefinition Height="30" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -33,12 +33,15 @@
                        Grid.Column="0"
                        Grid.ColumnSpan="3"
                        MouseLeftButtonDown="TopDragBar_MouseLeftButtonDown" />
-            <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Text="Elementary"
-                       Margin="10,0,0,2"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Images/atom.jpg"
+                       Width="20"
+                       Height="20"
+                       VerticalAlignment="Center"
+                       Margin="10,0,6,0" />
+                <TextBlock Text="Elementary"
+                           VerticalAlignment="Center" />
+            </StackPanel>
             <UniformGrid Grid.Row="0"
                          Grid.Column="2"
                          Rows="1"

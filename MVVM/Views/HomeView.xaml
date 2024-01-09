@@ -15,62 +15,6 @@
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-
-        <Style x:Key="SearchBoxStyle"
-               TargetType="TextBox">
-            <!-- Horizontal margins -->
-            <Setter Property="Margin"
-                    Value="10,0,20,0" />
-            <Setter Property="Height"
-                    Value="50" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border CornerRadius="10"
-                                Background="Cyan">
-                            <Grid Margin="10,0">
-                                <TextBox x:Name="SearchBox"
-                                         HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         VerticalContentAlignment="Center"
-                                         TextWrapping="Wrap"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         Foreground="{StaticResource PrimaryDark1Brush}"
-                                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                </TextBox>
-
-                                <!-- Placeholder -->
-                                <TextBlock IsHitTestVisible="False"
-                                           Text="Search element"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Left"
-                                           Foreground="#96000000">
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Visibility"
-                                                    Value="Collapsed" />
-                                            <Style.Triggers>
-                                                <!-- If TEXT property of SEARCHBOX element (above) has value "" (nothing) -->
-                                                <DataTrigger Binding="{Binding Text, ElementName=SearchBox}"
-                                                             Value="">
-                                                    <!-- Make the placeholder visible then -->
-                                                    <Setter Property="Visibility"
-                                                            Value="Visible" />
-                                                    <!-- Collapsed by default -->
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
-                                </TextBlock>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-        </Style>
     </UserControl.Resources>
 
     <Border Background="{StaticResource PrimaryLight3Brush}">
@@ -98,6 +42,8 @@
                                FontSize="48" />
                     <TextBox Style="{StaticResource SearchBoxStyle}" />
                 </DockPanel>
+
+                <!-- List of elements -->
                 <ListView ItemsSource="{Binding Elements}"
                           SelectedItem="{Binding SelectedElement}"
                           Height="365"
