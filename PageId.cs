@@ -8,6 +8,6 @@ namespace Elementary
 {
     public enum PageId
     {
-        Home, About, Info
+        Discover, Guide, Information
     }
 }

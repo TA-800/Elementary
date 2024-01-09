@@ -24,12 +24,12 @@ namespace Elementary.MVVM.ViewModels
                 
                 switch(currentPage)
                 {
-                    case PageId.Home:
+                    case PageId.Discover:
 
                         break;
-                    case PageId.About:
+                    case PageId.Guide:
                         break;
-                    case PageId.Info:
+                    case PageId.Information:
                         break;
                     default:
                         break;
@@ -39,16 +39,16 @@ namespace Elementary.MVVM.ViewModels
         public MainViewModel()
         {
             // Default page
-            CurrentPage = PageId.Home;
+            CurrentPage = PageId.Discover;
 
             // Data Contexts
 
             // Navigation items = PageId.Home, About, Info
             NavigationItemList = new ObservableCollection<PageId>
             {
-                PageId.Home,
-                PageId.About,
-                PageId.Info
+                PageId.Discover,
+                PageId.Guide,
+                PageId.Information
             };
 
         }

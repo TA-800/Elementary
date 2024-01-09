@@ -75,12 +75,12 @@
                         <Style.Triggers>
                             <!-- Based on CurrentPage value, change view by setting ContentTemplate -->
                             <DataTrigger Binding="{Binding CurrentPage}"
-                                         Value="About">
+                                         Value="Guide">
                                 <Setter Property="ContentTemplate"
                                         Value="{StaticResource AboutView}" />
                             </DataTrigger>
                             <DataTrigger Binding="{Binding CurrentPage}"
-                                         Value="Info">
+                                         Value="Information">
                                 <Setter Property="ContentTemplate"
                                         Value="{StaticResource InfoView}" />
                             </DataTrigger>
