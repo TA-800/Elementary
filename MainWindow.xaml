@@ -10,8 +10,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         Title="MainWindow"
-        Height="450"
-        Width="800">
+        Height="500"
+        Width="900">
 
 
     <Border Background="{StaticResource PrimaryDark2Brush}">

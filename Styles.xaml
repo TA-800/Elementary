@@ -174,4 +174,51 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Item Template for Elements in List View -->
+    <Style TargetType="ListViewItem"
+               x:Key="ElementItemContainer">
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+            <Setter Property="Margin"
+                    Value="2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border x:Name="ElementItemBg"
+                                Background="{StaticResource PrimaryLight2Brush}"
+                                CornerRadius="4"
+                                Padding="10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="ElementNumber"
+                                           Foreground="{StaticResource PrimaryDark1Brush}"
+                                           Text="{Binding Number}"
+                                           Margin="5"
+                                           VerticalAlignment="Bottom" />
+                                <TextBlock x:Name="ElementName"
+                                           Foreground="{StaticResource PrimaryDark1Brush}"
+                                           Text="{Binding Name}"
+                                           Margin="5"
+                                           FontWeight="Bold"
+                                           FontSize="20" />
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="ElementItemBg"
+                                        Property="Background"
+                                        Value="{StaticResource PrimaryDark1Brush}" />
+                                <Setter TargetName="ElementNumber"
+                                        Property="Foreground"
+                                        Value="{StaticResource PrimaryLight2Brush}" />
+                                <Setter TargetName="ElementName"
+                                        Property="Foreground"
+                                        Value="{StaticResource PrimaryLight2Brush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
 </ResourceDictionary>

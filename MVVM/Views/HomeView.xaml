@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Elementary.MVVM.Views"
              xmlns:viewModels="clr-namespace:Elementary.MVVM.ViewModels"
-             xmlns:models="clr-namespace:Elementary.MVVM.Models"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -15,46 +13,13 @@
         <viewModels:HomeViewModel />
     </UserControl.DataContext>
 
-    <UserControl.Resources>
-        <Style TargetType="ListViewItem"
-               x:Key="ElementItemContainer">
-            <Setter Property="HorizontalContentAlignment"
-                    Value="Stretch" />
-            <Setter Property="Margin"
-                    Value="2" />
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate DataType="models:Element">
-                        <Border x:Name="ElementItemBg"
-                                Background="{StaticResource PrimaryLight2Brush}"
-                                CornerRadius="4"
-                                Padding="10">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="ElementNumber"
-                                           Foreground="{StaticResource PrimaryDark1Brush}"
-                                           Text="{Binding Number}"
-                                           Margin="5"
-                                           VerticalAlignment="Bottom" />
-                                <TextBlock x:Name="ElementName"
-                                           Foreground="{StaticResource PrimaryDark1Brush}"
-                                           Text="{Binding Name}"
-                                           Margin="5"
-                                           FontWeight="Bold"
-                                           FontSize="20" />
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-
     <Border Background="{StaticResource PrimaryLight3Brush}">
         <StackPanel>
             <TextBlock Text="Knowledge"
                        Margin="10"
                        FontSize="48" />
             <ListView ItemsSource="{Binding Elements}"
+                      Height="365"
                       SelectionMode="Single"
                       Background="Transparent"
                       BorderThickness="0"
