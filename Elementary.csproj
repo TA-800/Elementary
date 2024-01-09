@@ -136,6 +136,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\csharp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dotnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\nodejs.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

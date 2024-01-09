@@ -9,38 +9,35 @@
              d:DesignWidth="800">
     <Border Background="{StaticResource PrimaryLight3Brush}">
         <StackPanel>
-            <TextBlock Text="Info"
+            <TextBlock Text="Information"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top"
                        FontSize="48"
                        Margin="10,10,0,0" />
-            <TextBlock Text="This is the info page"
+            <TextBlock Text="Attributions"
                        Style="{StaticResource InfoHeader}" />
-            <TextBlock Text="Freepik Atom Illustration: https://www.freepik.com"
-                       Style="{StaticResource InfoText}" />
-
+            <StackPanel>
+                <TextBlock Text="1. Freepik (vector illustrations)"
+                           Style="{StaticResource InfoText}" />
+                <TextBlock Text="2. Elements API forked from boraoksuzoglu/periodic-table-api"
+                           Style="{StaticResource InfoText}" />
+            </StackPanel>
             <TextBlock Text="Developed with"
                        Style="{StaticResource InfoHeader}" />
-            <TextBlock Text="C#, XAML, .NET Framework"
+            <TextBlock Text="C#, XAML, .NET Framework, NodeJs"
                        Style="{StaticResource InfoText}" />
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <!-- C# placeholder -->
-                <Rectangle Width="100"
-                           Height="100"
-                           Fill="Blue"
-                           Margin="10" />
-                <!-- XAML placeholder -->
-                <Rectangle Width="100"
-                           Height="100"
-                           Fill="Red"
-                           Margin="10" />
-                <!-- dotnet placeholder -->
-                <Rectangle Width="100"
-                           Height="100"
-                           Fill="Yellow"
-                           Margin="10" />
+                <Image Margin="10" Width="100"
+                       Source="../../Images/xml.png" />
+                <Image Margin="10" Width="100"
+                       Source="../../Images/csharp.png" />
+                <Image Margin="10" Height="100"
+                       Source="../../Images/dotnet.png" />
+                <Image Margin="10" Height="100"
+                       Source="../../Images/nodejs.png" />
             </StackPanel>
+
         </StackPanel>
     </Border>
 </UserControl>
