@@ -10,5 +10,6 @@ namespace Elementary.MVVM.Stores
     public class UserStore
     {
         public static User SavedUser { get; set; }
+        public static List<User> SavedUsers { get; set; }
     }
 }

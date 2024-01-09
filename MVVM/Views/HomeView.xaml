@@ -14,23 +14,22 @@
         <viewModels:HomeViewModel />
     </UserControl.DataContext>
 
-    <UserControl.Resources>
-        <DataTemplate x:Key="UserDataTemplate" DataType="models:User">
-            <StackPanel>
-                <TextBlock Text="{Binding name}" />
-                <TextBlock Text="{Binding id}" />
-                <TextBlock Text="{Binding email}" />
-            </StackPanel>
-        </DataTemplate>
-    </UserControl.Resources>
-
     <Border Background="Yellow">
         <StackPanel>
         <TextBlock Text="Home"
                    FontSize="48" />
-            <ContentControl x:Name="TestUser"
-                            Content="{Binding MyUser}"
-                            ContentTemplate="{StaticResource UserDataTemplate}" />
+
+            <ItemsControl ItemsSource="{Binding Users}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Background="Gold">
+                            <TextBlock Foreground="White" Text="{Binding name}" />
+                            <TextBlock Foreground="White" Text="{Binding id}" />
+                            <TextBlock Foreground="White" Text="{Binding email}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel> 
     </Border>
 </UserControl>
