@@ -54,14 +54,25 @@
             </UniformGrid>
 
             <!-- Left side bar -->
-            <ListView x:Name="LeftSidebarBorder"
-                      Background="{StaticResource PrimaryDark1Brush}"
-                      Grid.Row="1"
-                      Grid.Column="0"
-                      ItemsSource="{Binding NavigationItemList}"
-                      SelectedItem="{Binding CurrentPage}"
-                      ItemContainerStyle="{StaticResource NavigationItem}"
-                      BorderBrush="{x:Null}" />
+            <DockPanel Grid.Row="1"
+                       Grid.Column="0"
+                       Background="{StaticResource PrimaryDark1Brush}">
+                <ListView x:Name="LeftSidebarBorder"
+                          DockPanel.Dock="Top"
+                          Background="Transparent"
+                          ItemsSource="{Binding NavigationItemList}"
+                          SelectedItem="{Binding CurrentPage}"
+                          ItemContainerStyle="{StaticResource NavigationItem}"
+                          BorderThickness="0"
+                          d:ItemsSource="{d:SampleData ItemCount=3}" />
+                <TextBlock DockPanel.Dock="Bottom"
+                           Text="Elementary 2024, Version 1."
+                           Margin="10,0,0,2"
+                           FontSize="12"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           Foreground="#19ffffff" />
+            </DockPanel>
 
             <!-- Main Content -->
             <ContentControl x:Name="MainContent"

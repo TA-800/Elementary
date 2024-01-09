@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Elementary.MVVM.Views"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -17,14 +16,14 @@
             <TextBlock Text="Attributions"
                        Style="{StaticResource InfoHeader}" />
             <StackPanel>
-                <TextBlock Text="1. Freepik (vector illustrations)"
+                <TextBlock Text="1. Freepik (vector illustrations)."
                            Style="{StaticResource InfoText}" />
-                <TextBlock Text="2. Elements API forked from boraoksuzoglu/periodic-table-api"
+                <TextBlock Text="2. API Github fork of boraoksuzoglu/periodic-table-api."
                            Style="{StaticResource InfoText}" />
             </StackPanel>
             <TextBlock Text="Developed with"
                        Style="{StaticResource InfoHeader}" />
-            <TextBlock Text="C#, XAML, .NET Framework, NodeJs"
+            <TextBlock Text="C#, XAML, .NET Framework, NodeJs."
                        Style="{StaticResource InfoText}" />
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">

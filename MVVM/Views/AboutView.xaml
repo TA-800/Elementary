@@ -9,7 +9,7 @@
              d:DesignWidth="800">
     <Border Background="{StaticResource PrimaryLight3Brush}">
         <DockPanel>
-            <TextBlock Text="Know How"
+            <TextBlock Text="How to"
                        DockPanel.Dock="Top"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Top"
@@ -18,16 +18,15 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
-                            Margin="20">
-                    <Rectangle Fill="AntiqueWhite"
-                               Margin="10,0"
-                               Width="80"
-                               Height="80" />
+                            Margin="5">
+                    <Image Height="120"
+                           Width="120"
+                           Source="../../Images/atom.jpg" />
                     <TextBlock Text="Elementary"
                                Margin="10,0"
                                VerticalAlignment="Center"
-                               FontWeight="Black"
-                               FontSize="36"
+                               FontWeight="ExtraBold"
+                               FontSize="56"
                                Foreground="White" />
                 </StackPanel>
                 <TextBlock Text="What is Elementary?"

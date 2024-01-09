@@ -148,5 +148,8 @@
   <ItemGroup>
     <Resource Include="Images\nodejs.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\atom.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
