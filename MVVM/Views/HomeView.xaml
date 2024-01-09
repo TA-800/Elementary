@@ -13,18 +13,47 @@
         <viewModels:HomeViewModel />
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
     <Border Background="{StaticResource PrimaryLight3Brush}">
-        <StackPanel>
-            <TextBlock Text="Knowledge"
-                       Margin="10"
-                       FontSize="48" />
-            <ListView ItemsSource="{Binding Elements}"
-                      Height="365"
-                      SelectionMode="Single"
-                      Background="Transparent"
-                      BorderThickness="0"
-                      ItemContainerStyle="{StaticResource ElementItemContainer}"
-                      d:ItemsSource="{d:SampleData ItemCount=5}" />
-        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                <TextBlock Text="Knowledge"
+                           Margin="10"
+                           FontSize="48" />
+                <ListView ItemsSource="{Binding Elements}"
+                          SelectedItem="{Binding SelectedElement}"
+                          Height="365"
+                          SelectionMode="Single"
+                          Background="Transparent"
+                          BorderThickness="0"
+                          ItemContainerStyle="{StaticResource ElementItemContainer}"
+                          d:ItemsSource="{d:SampleData ItemCount=5}" />
+            </StackPanel>
+
+            <!-- Info box on bottom right -->
+            <Border x:Name="ElementInfoBox"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0,0,20,20"
+                    Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Background="{StaticResource PrimaryDark5Brush}"
+                    BorderBrush="{StaticResource PrimaryDark1Brush}"
+                    BorderThickness="2">
+            </Border>
+        </Grid>
     </Border>
 </UserControl>

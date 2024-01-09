@@ -16,13 +16,26 @@ namespace Elementary.MVVM.ViewModels
         // List of all elements
         public ObservableCollection<Element> Elements { get; set; }
 
+        private bool isSelected = false;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set { isSelected = value; OnPropertyChanged(); }
+        }
+
         // Selected element
         private Element selectedElement;
         public Element SelectedElement
         {
             get { return selectedElement; }
-            set { selectedElement = value; OnPropertyChanged(); }
+            set
+            {
+                selectedElement = value;
+                OnPropertyChanged();
+                IsSelected = selectedElement != null;
+            }
         }
+
 
         public HomeViewModel()
         {
