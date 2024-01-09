@@ -10,15 +10,27 @@ namespace Elementary.MVVM.Models
     {
         public string Name { get; }
         public string Symbol { get; }
-        public int AtomicNumber { get; }
-        public double AtomicMass { get; }
+        public int Number { get; }
+        public double Atomic_Mass { get; }
+        public int Group { get; }
+        public int Period { get; }
+        public string Block { get; }
+        public string Electron_Configuration { get; }
+        public string Category { get; }
 
-        public Element(string name, string symbol, int atomicNumber, double atomicMass)
+        public Element(string name, string symbol, int number, double atomic_mass, int group, int period, string block, string electron_configuration, string category)
         {
             Name = name;
             Symbol = symbol;
-            AtomicNumber = atomicNumber;
-            AtomicMass = atomicMass;
+            Number = number;
+            Atomic_Mass = atomic_mass;
+            Group = group;
+            Period = period;
+            Block = block;
+            Electron_Configuration = electron_configuration;
+            Category = category;
         }
+
+
     }
 }

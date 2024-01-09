@@ -5,56 +5,73 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace Elementary.MVVM.ViewModels
 {
     public class HomeViewModel : ObservableObject
     {
-        public ObservableCollection<User> Users { get; set; }
+        // List of all elements
+        public ObservableCollection<Element> Elements { get; set; }
+
+        // Selected element
+        private Element selectedElement;
+        public Element SelectedElement
+        {
+            get { return selectedElement; }
+            set { selectedElement = value; OnPropertyChanged(); }
+        }
+
         public HomeViewModel()
         {
 
-            Users = new ObservableCollection<User>();
+            Elements = new ObservableCollection<Element>();
 
-            if (UserStore.SavedUsers != null)
+            if (ElementStore.Elements != null)
             {
-                foreach (User user in UserStore.SavedUsers)
+                foreach (Element element in ElementStore.Elements)
                 {
-                    Users.Add(user);
+                    Elements.Add(element);
                 }
 
             }
             else
             {
-                _ = GetUserAsync().ContinueWith((task) =>
+                _ = GetElementsAsync().ContinueWith((task) =>
                 {
-                    foreach (User user in task.Result)
+                    foreach (Element element in task.Result)
                     {
                         // Users.Add(user);
                         // https://stackoverflow.com/a/18336392
                         App.Current.Dispatcher.Invoke((Action)delegate
                         {
-                            Users.Add(user);
+                            Elements.Add(element);
                         });
                     }
 
-                    UserStore.SavedUsers = task.Result;
+                    ElementStore.Elements = task.Result;
                 });
             }
 
 
         }
-        public async Task<List<User>> GetUserAsync()
+        public async Task<List<Element>> GetElementsAsync()
         {
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.GetAsync("https://jsonplaceholder.typicode.com/users");
+                // Get url
+                var configJson = File.ReadAllText("../../config.json");
+                dynamic config = JsonConvert.DeserializeObject(configJson);
+                string url = config["BaseApiUrl"];
+
+                // Fetch
+                var response = await client.GetAsync(url);
                 var json = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(json);
-                return JsonConvert.DeserializeObject<List<User>>(json);
+
+                // Deserialize
+                return JsonConvert.DeserializeObject<List<Element>>(json);
             }
 
         }
