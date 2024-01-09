@@ -8,6 +8,11 @@
            G="213"
            B="225"
            A="255" />
+    <Color x:Key="PrimaryLight1P5"
+           R="203"
+           G="213"
+           B="225"
+           A="130" />
     <Color x:Key="PrimaryLight2"
            R="148"
            G="163"
@@ -60,6 +65,8 @@
     <!-- Brush -->
     <SolidColorBrush x:Key="PrimaryLight1Brush"
                      Color="{StaticResource PrimaryLight1}" />
+    <SolidColorBrush x:Key="PrimaryLight1P5Brush"
+                     Color="{StaticResource PrimaryLight1P5}" />
     <SolidColorBrush x:Key="PrimaryLight2Brush"
                      Color="{StaticResource PrimaryLight2}" />
     <SolidColorBrush x:Key="PrimaryLight3Brush"
@@ -158,6 +165,7 @@
 
                         <Label Content="{TemplateBinding Content}"
                                Foreground="{StaticResource PrimaryLight1Brush}"
+                               FontSize="30"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center" />
                     </Border>
