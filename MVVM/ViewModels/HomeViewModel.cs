@@ -14,6 +14,9 @@ namespace Elementary.MVVM.ViewModels
     public class HomeViewModel : ObservableObject
     {
         // List of all elements
+        public List<Element> AllElements { get; set; }
+
+        // List of elements to display (can be filtered by search)
         public ObservableCollection<Element> Elements { get; set; }
 
         private bool isSelected = false;
@@ -37,15 +40,41 @@ namespace Elementary.MVVM.ViewModels
         }
 
 
+        private string searchText;
+
+        public string SearchText
+        {
+            get { return searchText; }
+            set
+            {
+                searchText = value;
+                OnPropertyChanged();
+
+                // Update list based on search text
+                Elements.Clear();
+                foreach (Element element in AllElements)
+                {
+                    if (element.Name.ToLower().Contains(searchText.ToLower()))
+                    {
+                        Elements.Add(element);
+                    }
+                }
+            }
+        }
+
+
         public HomeViewModel()
         {
 
+            // Initialize lists
+            AllElements = new List<Element>();
             Elements = new ObservableCollection<Element>();
 
             if (ElementStore.Elements != null)
             {
                 foreach (Element element in ElementStore.Elements)
                 {
+                    AllElements.Add(element);
                     Elements.Add(element);
                 }
 
@@ -56,10 +85,10 @@ namespace Elementary.MVVM.ViewModels
                 {
                     foreach (Element element in task.Result)
                     {
-                        // Users.Add(user);
                         // https://stackoverflow.com/a/18336392
                         App.Current.Dispatcher.Invoke((Action)delegate
                         {
+                            AllElements.Add(element);
                             Elements.Add(element);
                         });
                     }
@@ -67,8 +96,6 @@ namespace Elementary.MVVM.ViewModels
                     ElementStore.Elements = task.Result;
                 });
             }
-
-
         }
         public async Task<List<Element>> GetElementsAsync()
         {
