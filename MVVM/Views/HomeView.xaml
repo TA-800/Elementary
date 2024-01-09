@@ -50,10 +50,7 @@
                     Grid.Column="1"
                     Margin="0,0,20,20"
                     Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Background="{StaticResource PrimaryDark5Brush}"
-                    BorderBrush="{StaticResource PrimaryDark1Brush}"
-                    BorderThickness="2">
-            </Border>
+                    Style="{StaticResource InfoBoxStyle}" />
         </Grid>
     </Border>
 </UserControl>
