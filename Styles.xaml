@@ -249,8 +249,139 @@
                 Value="5" />
     </Style>
 
-    
-    
+    <!--Infobox-->
+    <Style TargetType="ContentControl"
+           x:Key="InfoBoxContentTemplate">
+
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+
+                    <!-- Wrapper -->
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Border Background="{StaticResource PrimaryDark5Brush}"
+                                BorderBrush="#40000000"
+                                BorderThickness="2"
+                                CornerRadius="4">
+                            <StackPanel>
+
+                                <!-- Header -->
+                                <Border Background="{StaticResource PrimaryDark4Brush}"
+                                        CornerRadius="4"
+                                        Margin="5"
+                                        Padding="2.5">
+                                    <DockPanel>
+                                        <TextBlock Text="{Binding Number}"
+                                                   VerticalAlignment="Center"
+                                                   DockPanel.Dock="Left"
+                                                   Margin="5" />
+                                        <TextBlock Text="{Binding Name}"
+                                                   VerticalAlignment="Center"
+                                                   Margin="5" />
+                                        <TextBlock Text="{Binding Symbol}"
+                                                   VerticalAlignment="Bottom"
+                                                   HorizontalAlignment="Right"
+                                                   FontWeight="Black"
+                                                   FontSize="22"
+                                                   Margin="5" />
+                                    </DockPanel>
+                                </Border>
+
+                                <!-- Information -->
+                                <Border>
+                                    <StackPanel Margin="10">
+                                        <TextBlock Text="Information"
+                                                   FontWeight="Bold" />
+                                        <Border>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="28*" />
+                                                    <ColumnDefinition Width="72*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock Text="Mass"
+                                                           Style="{StaticResource ElementTableInfoHeader}" />
+                                                <TextBlock Text="Period"
+                                                           Style="{StaticResource ElementTableInfoHeader}"
+                                                           Grid.Row="1" />
+                                                <TextBlock Text="Group"
+                                                           Style="{StaticResource ElementTableInfoHeader}"
+                                                           Grid.Row="2" />
+                                                <TextBlock Text="Block"
+                                                           Style="{StaticResource ElementTableInfoHeader}"
+                                                           Grid.Row="3" />
+                                                <TextBlock Text="Configuration"
+                                                           Style="{StaticResource ElementTableInfoHeader}"
+                                                           FontWeight="Light"
+                                                           FontSize="10"
+                                                           Grid.Row="4" />
+
+                                                <TextBlock Text="{Binding Atomic_Mass}"
+                                                           Style="{StaticResource ElementTableInfoData}"
+                                                           Grid.Column="1" />
+                                                <TextBlock Text="{Binding Period}"
+                                                           Style="{StaticResource ElementTableInfoData}"
+                                                           Grid.Row="1"
+                                                           Grid.Column="1" />
+                                                <TextBlock Text="{Binding Group}"
+                                                           Style="{StaticResource ElementTableInfoData}"
+                                                           Grid.Row="2"
+                                                           Grid.Column="1" />
+                                                <TextBlock Text="{Binding Block}"
+                                                           Style="{StaticResource ElementTableInfoData}"
+                                                           Grid.Row="3"
+                                                           Grid.Column="1" />
+                                                <TextBlock Text="{Binding Electron_Configuration}"
+                                                           Style="{StaticResource ElementTableInfoData}"
+                                                           Grid.Row="4"
+                                                           Grid.Column="1" />
+
+                                                <TextBlock Text="{Binding Summary}"
+                                                           TextWrapping="Wrap"
+                                                           Grid.Row="5"
+                                                           Grid.ColumnSpan="2" />
+
+                                            </Grid>
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Fade in when is visible-->
+        <Style.Triggers>
+            <Trigger Property="Visibility"
+                     Value="Visible">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0"
+                                             To="1"
+                                             Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
     <!-- Custom scrollbar: https://pastebin.com/adtRjDtG -->
     <!-- Brushes for the scrollbar -->
 
