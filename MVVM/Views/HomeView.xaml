@@ -16,51 +16,62 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-        <Style x:Key="BlockElementsFilterListStyle"
-               TargetType="ListView">
-            <Setter Property="ItemsPanel">
-                <Setter.Value>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="BlockElementsFilterItemContainerStyle"
-               TargetType="ListViewItem">
-
+        <Style x:Key="ClearAllFilterButtonStyle"
+               TargetType="Button">
+            <Setter Property="Margin"
+                    Value="0,0,24,0" />
+            <Setter Property="Width"
+                    Value="100" />
+            <Setter Property="Height"
+                    Value="40" />
             <Setter Property="Background"
-                    Value="{StaticResource PrimaryLight2Brush}" />
+                    Value="#929facbf" />
             <Setter Property="Foreground"
                     Value="{StaticResource PrimaryDark1Brush}" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="ListViewItem">
-                        <Border Background="{TemplateBinding Background}"
-                                Margin="4"
-                                Width="40"
-                                Height="40"
-                                CornerRadius="4">
-                            <TextBlock Text="{Binding}"
-                                       VerticalAlignment="Center"
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="border"
+                                BorderThickness="0"
+                                BorderBrush="{StaticResource PrimaryLight2Brush}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+                            <TextBlock x:Name="label"
+                                       Text="{TemplateBinding Content}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontWeight="Normal"
                                        HorizontalAlignment="Center"
-                                       FontSize="16"
-                                       Foreground="{TemplateBinding Foreground}" />
+                                       VerticalAlignment="Center" />
                         </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="{StaticResource PrimaryDark2Brush}" />
+                                <Setter TargetName="label"
+                                        Property="Foreground"
+                                        Value="{StaticResource PrimaryLight2Brush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+                                <Setter TargetName="border"
+                                        Property="Background"
+                                        Value="{StaticResource PrimaryDark1Brush}" />
+                                <Setter TargetName="border"
+                                        Property="BorderThickness"
+                                        Value="2" />
+                                <Setter TargetName="label"
+                                        Property="FontWeight"
+                                        Value="Demibold" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsSelected"
-                         Value="True">
-                    <Setter Property="Background"
-                            Value="{StaticResource PrimaryDark1Brush}" />
-                    <Setter Property="Foreground"
-                            Value="{StaticResource PrimaryLight2Brush}" />
-                </Trigger>
-            </Style.Triggers>
         </Style>
     </UserControl.Resources>
 
@@ -89,21 +100,23 @@
 
                 <!-- Header (Elements + Search) -->
                 <DockPanel Grid.Row="0">
+                    <Button Command="{Binding ClearAllFilters}"
+                            Style="{StaticResource ClearAllFilterButtonStyle}"
+                            DockPanel.Dock="Right"
+                            Content="Clear" />
+                    <ListView ItemsSource="{Binding BlockElements}"
+                              SelectedItem="{Binding SelectedBlockFilter}"
+                              Style="{StaticResource BlockElementsFilterListStyle}"
+                              ItemContainerStyle="{StaticResource BlockElementsFilterItemContainerStyle}"
+                              DockPanel.Dock="Right"
+                              VerticalAlignment="Center"
+                              SelectionMode="Single"
+                              BorderThickness="0" />
                     <TextBlock Text="Elements"
                                DockPanel.Dock="Left"
                                Margin="10"
                                FontSize="48" />
                     <TextBox Style="{StaticResource SearchBoxStyle}" />
-                    <ListView ItemsSource="{Binding BlockElements}"
-                              SelectedItem="{Binding SelectedBlockFilter}"
-                              Style="{StaticResource BlockElementsFilterListStyle}"
-                              ItemContainerStyle="{StaticResource BlockElementsFilterItemContainerStyle}"
-                              VerticalAlignment="Center"
-                              SelectionMode="Single"
-                              Background="Transparent"
-                              BorderThickness="0" />
-                    <Button Command="{Binding ClearAllFilters}"
-                            Content="Clear" />
                 </DockPanel>
 
                 <!-- Show text when loading -->

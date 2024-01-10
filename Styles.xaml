@@ -389,21 +389,77 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Block filter styling -->
+    <!-- Change List orientation to Horizontal -->
+    <Style x:Key="BlockElementsFilterListStyle"
+           TargetType="ListView">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin"
+                Value="10,0,10,0" />
+        <Setter Property="Background"
+                Value="Transparent" />
+    </Style>
+
+    <!-- Change styling of list items -->
+    <Style x:Key="BlockElementsFilterItemContainerStyle"
+           TargetType="ListViewItem">
+
+        <Setter Property="Background"
+                Value="{StaticResource PrimaryLight2Brush}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource PrimaryDark1Brush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border Background="{TemplateBinding Background}"
+                            Margin="4"
+                            Width="40"
+                            Height="40"
+                            CornerRadius="4">
+                        <TextBlock Text="{Binding}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="16"
+                                   Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsSelected"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="{StaticResource PrimaryDark1Brush}" />
+                <Setter Property="Foreground"
+                        Value="{StaticResource PrimaryLight2Brush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
     <!-- Search box style in Home view -->
     <Style x:Key="SearchBoxStyle"
            TargetType="TextBox">
         <!-- Horizontal margins -->
         <Setter Property="Margin"
-                Value="10,0" />
+                Value="4,0,0,0" />
+        <Setter Property="MinWidth"
+                Value="140" />
         <Setter Property="Height"
-                Value="50" />
+                Value="40" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Border CornerRadius="10"
-                            Background="Cyan">
+                            Background="#929facbf">
+                        <!-- Inner margin -->
                         <Grid Margin="10,0">
                             <TextBox x:Name="SearchBox"
                                      HorizontalAlignment="Stretch"
@@ -448,7 +504,6 @@
     </Style>
 
     <!-- Hide when loading elements text block -->
-
     <Style x:Key="LoadingElementsText"
            TargetType="TextBlock">
         <Setter Property="Foreground"

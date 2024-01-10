@@ -49,6 +49,20 @@ namespace Elementary.MVVM.ViewModels
             }
         }
 
+
+        // Method to update list if search text or block filter changes
+        private void UpdateList()
+        {
+            Elements.Clear();
+            foreach (Element element in AllElements)
+            {
+                if (element.Name.ToLower().Contains(searchText.ToLower()) && (element.Block == selectedBlockFilter || selectedBlockFilter == null))
+                {
+                    Elements.Add(element);
+                }
+            }
+        }
+
         private string searchText;
         public string SearchText
         {
@@ -57,19 +71,9 @@ namespace Elementary.MVVM.ViewModels
             {
                 searchText = value;
                 OnPropertyChanged();
-
-                // Update list based on search text
-                Elements.Clear();
-                foreach (Element element in AllElements)
-                {
-                    if (element.Name.ToLower().Contains(searchText.ToLower()))
-                    {
-                        Elements.Add(element);
-                    }
-                }
+                UpdateList();
             }
         }
-
         // List View items source for block elements filter
         public List<string> BlockElements { get; set; } = new List<string> { "s", "p", "d", "f" };
 
@@ -82,19 +86,9 @@ namespace Elementary.MVVM.ViewModels
             {
                 selectedBlockFilter = value;
                 OnPropertyChanged();
-
-                // Update list based on selected block filter
-                Elements.Clear();
-
-                foreach (Element element in AllElements)
-                {
-                    // If no filter is selected OR the element's block matches the selected filter
-                    if (selectedBlockFilter == null || element.Block == selectedBlockFilter)
-                    {
-                        Elements.Add(element);
-                    }
-                }
+                UpdateList();
             }
+
         }
 
         public RelayCommand ClearAllFilters { get; set; }
