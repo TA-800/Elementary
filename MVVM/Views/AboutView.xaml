@@ -38,9 +38,11 @@
                            Style="{StaticResource InfoHeader}" />
                 <!-- List view of two points -->
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Text="1. Click on the element to you wish to inspect and an info box to the right will appear containing detailed information about the element clicked on."
+                    <TextBlock Text="1. Click on an element and an info box containing detailed information will appear on the right."
                                Style="{StaticResource InfoText}" />
-                    <TextBlock Text="2. Type in the search bar at the top to filter out the elements displayed in the main view containing the characters in the search bar."
+                    <TextBlock Text="2. Use the searchbar or block filters on the top to filter out elements as needed."
+                               Style="{StaticResource InfoText}" />
+                    <TextBlock Text="3. Click on the Clear button on the top right to clear out search and block filters."
                                Style="{StaticResource InfoText}" />
                 </StackPanel>
 

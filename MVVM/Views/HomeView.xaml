@@ -15,64 +15,6 @@
 
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-
-        <Style x:Key="ClearAllFilterButtonStyle"
-               TargetType="Button">
-            <Setter Property="Margin"
-                    Value="0,0,24,0" />
-            <Setter Property="Width"
-                    Value="100" />
-            <Setter Property="Height"
-                    Value="40" />
-            <Setter Property="Background"
-                    Value="#929facbf" />
-            <Setter Property="Foreground"
-                    Value="{StaticResource PrimaryDark1Brush}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-
-                        <Border x:Name="border"
-                                BorderThickness="0"
-                                BorderBrush="{StaticResource PrimaryLight2Brush}"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="5">
-                            <TextBlock x:Name="label"
-                                       Text="{TemplateBinding Content}"
-                                       Foreground="{TemplateBinding Foreground}"
-                                       FontWeight="Normal"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" />
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver"
-                                     Value="True">
-                                <Setter TargetName="border"
-                                        Property="Background"
-                                        Value="{StaticResource PrimaryDark2Brush}" />
-                                <Setter TargetName="label"
-                                        Property="Foreground"
-                                        Value="{StaticResource PrimaryLight2Brush}" />
-                            </Trigger>
-                            <Trigger Property="IsPressed"
-                                     Value="True">
-                                <Setter TargetName="border"
-                                        Property="Background"
-                                        Value="{StaticResource PrimaryDark1Brush}" />
-                                <Setter TargetName="border"
-                                        Property="BorderThickness"
-                                        Value="2" />
-                                <Setter TargetName="label"
-                                        Property="FontWeight"
-                                        Value="Demibold" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
 
     <Border Background="{StaticResource PrimaryLight3Brush}">
