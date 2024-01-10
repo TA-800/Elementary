@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace Elementary.MVVM.ViewModels
 {
@@ -48,7 +49,6 @@ namespace Elementary.MVVM.ViewModels
             }
         }
 
-
         private string searchText;
         public string SearchText
         {
@@ -70,10 +70,46 @@ namespace Elementary.MVVM.ViewModels
             }
         }
 
+        // List View items source for block elements filter
+        public List<string> BlockElements { get; set; } = new List<string> { "s", "p", "d", "f" };
+
+        private string selectedBlockFilter;
+
+        public string SelectedBlockFilter
+        {
+            get { return selectedBlockFilter; }
+            set
+            {
+                selectedBlockFilter = value;
+                OnPropertyChanged();
+
+                // Update list based on selected block filter
+                Elements.Clear();
+
+                foreach (Element element in AllElements)
+                {
+                    // If no filter is selected OR the element's block matches the selected filter
+                    if (selectedBlockFilter == null || element.Block == selectedBlockFilter)
+                    {
+                        Elements.Add(element);
+                    }
+                }
+            }
+        }
+
+        public RelayCommand ClearAllFilters { get; set; }
 
         public HomeViewModel()
         {
+
             IsLoading = true;
+
+            ClearAllFilters = new RelayCommand(obj =>
+            {
+                SearchText = "";
+                SelectedBlockFilter = null;
+            });
+
 
             // Initialize lists
             AllElements = new List<Element>();

@@ -395,7 +395,7 @@
            TargetType="TextBox">
         <!-- Horizontal margins -->
         <Setter Property="Margin"
-                Value="10,0,20,0" />
+                Value="10,0" />
         <Setter Property="Height"
                 Value="50" />
 
