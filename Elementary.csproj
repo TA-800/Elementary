@@ -97,9 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Models\Element.cs" />
-    <Compile Include="MVVM\Models\User.cs" />
     <Compile Include="MVVM\Stores\ElementStore.cs" />
-    <Compile Include="MVVM\Stores\UserStore.cs" />
     <Compile Include="MVVM\ViewModels\HomeViewModel.cs" />
     <Compile Include="MVVM\ViewModels\MainViewModel.cs" />
     <Compile Include="MVVM\Views\AboutView.xaml.cs">
