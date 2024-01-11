@@ -15,7 +15,7 @@ https://github.com/TA-800/Elementary/assets/31612100/d118502e-6328-47cb-bf50-025
 - Use filters like search or blocks to view specific elements.
 
 ## Development
-The frontend for Elementary is built with Windows Presentation Foundation (WPF) in the .NET Framework with C# and designed with XAML. The API which the backend connects to is hosted on a simple NodeJs server.
+The frontend for Elementary is built with Windows Presentation Foundation (WPF) in the .NET Framework with C# and designed with XAML. The API which the backend connects to is hosted on a simple Node JS server.
 <p align="center">
   <img src="https://github.com/TA-800/Elementary/assets/31612100/0f9ccad1-5e8a-48d4-b768-c00c5cc574ed" width="75" height"75"/>
   <img src="https://github.com/TA-800/Elementary/assets/31612100/21d8ef08-3df4-46fc-b563-bd213e0f18d7" width="75" height"75"/>
